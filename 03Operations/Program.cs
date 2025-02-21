@@ -129,5 +129,34 @@ byte l = 5;
 Console.WriteLine("----");
 Console.WriteLine($"~l = {~l}");
 
+// 6. null 병합 연산자
+
+// 6-1. Nullable
+Nullable<int>  m = null;
+int? n = null;
+// null 값을 넣었다고 메모리가 초기화 되는 것은 아니고 메모리 공간은 유지하고 있지만 값이 할당되지 않았다는 것을 표시
+
+Console.WriteLine($"m = {m}"); // m =
+Console.WriteLine($"n = {n}"); // n =
+
+Console.WriteLine($"m 값이 있는가? {m.HasValue}"); // m 값이 있는가? False
+
+n = 5;
+Console.WriteLine($"n 값이 있는가? {n.HasValue}"); // n 값이 있는가? True
+
+int? o = null;
+
+// 6-2. ?? 연산
+int p = o ?? 3; // 왼쪽 값이 null일 경우 오른쪽 값을 반환
+Console.WriteLine($"p = {p}"); // p = 3
+
+// 6-3. ??= 연산
+o ??= n; // 왼쪽 값이 null일 경우 오른쪽 값을 할당
+Console.WriteLine($"o = {o}"); // o = 5
+
+o = 3;
+o ??= n; // 이 연산을 수행해도 o를 3으로 변경했기 때문에 null이 아니라서 연산이 되지 않음
+Console.WriteLine($"o = {o}"); // o = 3
+
 
 Console.ReadKey();
